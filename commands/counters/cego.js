@@ -4,13 +4,17 @@ const db = require('../../db.json');
 
 module.exports = {
     name: 'cego',
-    description: '',
+    aliases: [],
+    usage: '@Usuario',
+    description: 'Incrementa a quantidaded de vezes que o usuário marcado ou autor do comando foi cego',
     cooldown: 10,
     // eslint-disable-next-line no-unused-vars
     execute(msg, _args) {
-        const user = msg.mentions.users.first();
+        let user = msg.mentions.users.first();
         let times = 0;
         let reply = '';
+
+        if(user == null || user == undefined) user = msg.author;
 
         if(isDatabaseFileEmpty() || !isUserRegistered(user.id)) {
             const nUser = new UserEntry(user.id);

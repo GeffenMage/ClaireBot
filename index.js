@@ -22,6 +22,12 @@ dotenv.config();
 
 client.once('ready', () => {
 	console.log('ready');
+    client.user.setActivity(
+        `${prefix} help para lista de comandos`,
+        {
+            type : 'LISTENING',
+        },
+    );
 });
 
 client.on('message', (message) => {
@@ -31,9 +37,10 @@ client.on('message', (message) => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
-	if (!client.commands.has(commandName)) return;
+    const command = client.commands.get(commandName)
+	|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-    const command = client.commands.get(commandName);
+    if(!command) return;
 
     const { cooldowns } = client;
 

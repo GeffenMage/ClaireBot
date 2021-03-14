@@ -4,12 +4,16 @@ const db = require('../../db.json');
 
 module.exports = {
     name: 'status',
-    description: '',
+    aliases: [],
+    usage: '@Usuario',
+    description: 'Exibe todas as informações salvas sobre o usuário marcado ou o autor do comando',
     cooldown: 10,
     // eslint-disable-next-line no-unused-vars
     execute(msg, _args) {
-        const user = msg.mentions.users.first();
+        let user = msg.mentions.users.first();
         let reply = '';
+
+        if(user == null || user == undefined) user = msg.author;
 
         if(!isUserRegistered(user.id)) db.users.push(new UserEntry(user.id));
 
