@@ -19,7 +19,7 @@ module.exports = {
 
         const entry = db.users.find(usr => usr.uid == user.id);
 
-        reply = displayUserData(user.username, entry);
+        reply = displayUserData(user.id, entry);
 
         msg.channel.send(reply);
     },

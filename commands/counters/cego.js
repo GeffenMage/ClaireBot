@@ -6,7 +6,7 @@ module.exports = {
     name: 'cego',
     aliases: [],
     usage: '@Usuario',
-    description: 'Incrementa a quantidaded de vezes que o usuário marcado ou autor do comando foi cego',
+    description: 'Incrementa a quantidaded de vezes que o usuário marcado ou autor do comando foi cego(a)',
     cooldown: 10,
     // eslint-disable-next-line no-unused-vars
     execute(msg, _args) {
@@ -32,10 +32,10 @@ module.exports = {
         updateDatabaseFile(db);
 
         if (times > 1) {
-            reply = `${user.username} foi cego ${times} vezes`;
+            reply = `<@${user.id}> foi cego(a) ${times} vezes`;
         }
         else{
-            reply = `${user.username} foi cego ${times} vez`;
+            reply = `<@${user.id}> foi cego(a) ${times} vez`;
         }
 
         msg.channel.send(reply);

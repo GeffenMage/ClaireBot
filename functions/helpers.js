@@ -15,11 +15,14 @@ function isUserRegistered(userId) {
 		: false;
 }
 
-function displayUserData(username, { cego, criminoso, solado }) {
-	const res = `${username}: \n 
-    Foi cego ${cego} vezes \n 
-    Foi criminoso ${criminoso} vezes \n 
-    Foi solado ${solado} vezes`;
+function displayUserData(uid, { cego, criminoso, solado, fragmentado, surdo, ignorado }) {
+	const res = `<@${uid}>\n
+    Foi **cego(a)** ${cego} vezes\n
+    Foi **criminoso(a)** ${criminoso} vezes\n
+    Foi **solado(a)** ${solado} vezes\n
+	Foi **fragmentado(a)** ${fragmentado} vezes\n
+	Foi **surdo(a)** ${surdo} vezes\n
+	Foi **ignorado(a)** ${ignorado } vezes`;
 
     return res;
 }
